@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Компоненти - Рожева Тема</title>
+    <title>UI</title>
     <style>
         :root {
-            /* Головні кольори */
-            --bg-color: #ffb6c1;       /* Насичений рожевий фон сторінки */
-            --card-bg: #fff0f5;        /* Дуже світлий рожевий для карток */
-            --main-pink: #ff1493;      /* Яскравий рожевий для кнопок і акцентів */
-            --dark-pink: #900040;      /* Темно-рожевий для заголовків та посилань */
-            --text-main: #000000;      /* Чорний текст */
-            --text-muted: #2a2a2a;     /* Темно-сірий (майже чорний) для описів */
-            --zone-bg: #ffe4e1;        /* Рожевий фон для інтерактивних зон */
+            --bg-color: #ffb6c1;       
+            --card-bg: #fff0f5;       
+            --main-pink: #ff1493;     
+            --dark-pink: #900040;      
+            --text-main: #000000;     
+            --text-muted: #2a2a2a;   
+            --zone-bg: #ffe4e1;        
         }
 
         body {
@@ -87,7 +86,6 @@
             border: 1px solid #ffb6c1;
         }
 
-        /* Елементи форм */
         input[type="text"], select {
             width: 100%;
             box-sizing: border-box;
@@ -106,7 +104,6 @@
             box-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
         }
 
-        /* Кнопка */
         .pink-btn {
             background-color: var(--main-pink);
             color: white;
@@ -126,7 +123,6 @@
             transform: scale(1.02);
         }
 
-        /* Чекбокси та Радіо */
         .radio-check-group label {
             display: block;
             margin-bottom: 10px;
@@ -140,7 +136,6 @@
             margin-right: 10px;
         }
 
-        /* Вкладки (Tabs) */
         .tab-headers {
             display: flex;
             border-bottom: 3px solid var(--main-pink);
@@ -169,8 +164,6 @@
             font-weight: bold;
             color: var(--text-main);
         }
-
-        /* Підказка (Tooltip) */
         .fancy-tooltip {
             position: relative;
             display: inline-block;
@@ -203,7 +196,6 @@
             opacity: 1;
         }
 
-        /* Посилання (Link) */
         .pretty-link {
             color: var(--dark-pink);
             text-decoration: none;
@@ -216,8 +208,6 @@
             color: var(--main-pink);
             border-bottom-color: var(--main-pink);
         }
-
-        /* Таблиця (Data grid) */
         .pink-table {
             width: 100%;
             border-collapse: collapse;
@@ -249,7 +239,6 @@
 
     <div class="components-grid">
 
-        <!-- 1. Radiobutton -->
         <div class="ui-card">
             <h2>1. Radiobutton (Перемикач)</h2>
             <p class="info">Дозволяє обрати виключно один варіант із декількох взаємовиключних опцій.</p>
@@ -258,8 +247,6 @@
                 <label><input type="radio" name="theme" value="dark"> Ніжно-рожевий</label>
             </div>
         </div>
-
-        <!-- 2. Checkbox -->
         <div class="ui-card">
             <h2>2. Checkbox (Прапорець)</h2>
             <p class="info">Використовується для вибору кількох незалежних опцій одночасно або підтвердження дії.</p>
@@ -269,7 +256,6 @@
             </div>
         </div>
 
-        <!-- 3. Text input -->
         <div class="ui-card">
             <h2>3. Text input (Текстове поле)</h2>
             <p class="info">Поле, куди користувач може ввести однорядковий текст (ім'я, пошуковий запит тощо).</p>
@@ -278,7 +264,6 @@
             </div>
         </div>
 
-        <!-- 4. Tabs -->
         <div class="ui-card">
             <h2>4. Tabs (Вкладки)</h2>
             <p class="info">Групують контент за логічними розділами, дозволяючи перемикати відображення без оновлення сторінки.</p>
@@ -296,7 +281,6 @@
             </div>
         </div>
 
-        <!-- 5. Button -->
         <div class="ui-card">
             <h2>5. Button (Кнопка)</h2>
             <p class="info">Служить для підтвердження дій, відправки даних або виклику певних функцій.</p>
@@ -305,7 +289,6 @@
             </div>
         </div>
 
-        <!-- 6. Text label -->
         <div class="ui-card">
             <h2>6. Text label (Мітка)</h2>
             <p class="info">Текстовий підпис, пов'язаний з полем введення. Робить інтерфейс зрозумілішим та доступнішим.</p>
@@ -315,7 +298,6 @@
             </div>
         </div>
 
-        <!-- 7. Link -->
         <div class="ui-card">
             <h2>7. Link (Посилання)</h2>
             <p class="info">Елемент навігації для переходу між веб-сторінками або до зовнішніх ресурсів.</p>
@@ -324,7 +306,6 @@
             </div>
         </div>
 
-        <!-- 8. Tooltip -->
         <div class="ui-card">
             <h2>8. Tooltip (Підказка)</h2>
             <p class="info">Невеличке інформаційне віконце, що з'являється при наведенні курсору миші на елемент.</p>
@@ -333,7 +314,6 @@
             </div>
         </div>
 
-        <!-- 9. Dropdown list -->
         <div class="ui-card">
             <h2>9. Dropdown (Випадний список)</h2>
             <p class="info">Компактний спосіб показати великий перелік опцій, з якого можна вибрати лише одну.</p>
@@ -346,7 +326,6 @@
             </div>
         </div>
 
-        <!-- 10. Data grid -->
         <div class="ui-card">
             <h2>10. Data grid (Таблиця)</h2>
             <p class="info">Компонент для структурованого подання інформації у форматі рядків та стовпців.</p>
@@ -378,17 +357,13 @@
     </div>
 
     <script>
-        // Скрипт для керування вкладками (Tabs)
         function switchTab(evt, panelId) {
-            // Ховаємо всі панелі
             const panels = document.querySelectorAll('.tab-panel');
             panels.forEach(panel => panel.style.display = 'none');
             
-            // Забираємо активний стан у всіх кнопок
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active-tab'));
             
-            // Показуємо потрібну панель і активуємо кнопку
             document.getElementById(panelId).style.display = 'block';
             evt.currentTarget.classList.add('active-tab');
         }
