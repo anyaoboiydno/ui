@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Компоненти - Рожева Тема</title>
+    <style>
+        :root {
+            /* Головні кольори */
+            --bg-color: #ffb6c1;       /* Насичений рожевий фон сторінки */
+            --card-bg: #fff0f5;        /* Дуже світлий рожевий для карток */
+            --main-pink: #ff1493;      /* Яскравий рожевий для кнопок і акцентів */
+            --dark-pink: #900040;      /* Темно-рожевий для заголовків та посилань */
+            --text-main: #000000;      /* Чорний текст */
+            --text-muted: #2a2a2a;     /* Темно-сірий (майже чорний) для описів */
+            --zone-bg: #ffe4e1;        /* Рожевий фон для інтерактивних зон */
+        }
+
+        body {
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 0;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--main-pink), #ff69b4);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(255, 20, 147, 0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ui-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border-top: 6px solid var(--main-pink);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .ui-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.3);
+        }
+
+        h2 {
+            color: var(--dark-pink);
+            font-size: 20px;
+            margin-top: 0;
+            border-bottom: 2px dashed var(--main-pink);
+            padding-bottom: 8px;
+        }
+
+        p.info {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            min-height: 45px;
+            font-weight: 500;
+        }
+
+        .interactive-zone {
+            background-color: var(--zone-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ffb6c1;
+        }
+
+        /* Елементи форм */
+        input[type="text"], select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 2px solid #ffb6c1;
+            border-radius: 6px;
+            outline: none;
+            color: var(--text-main);
+            font-weight: bold;
+            background-color: #fff;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, select:focus {
+            border-color: var(--main-pink);
+            box-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
+        }
+
+        /* Кнопка */
+        .pink-btn {
+            background-color: var(--main-pink);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.1s;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .pink-btn:hover {
+            background-color: var(--dark-pink);
+            transform: scale(1.02);
+        }
+
+        /* Чекбокси та Радіо */
+        .radio-check-group label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: var(--main-pink);
+            transform: scale(1.3);
+            margin-right: 10px;
+        }
+
+        /* Вкладки (Tabs) */
+        .tab-headers {
+            display: flex;
+            border-bottom: 3px solid var(--main-pink);
+            margin-bottom: 10px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: var(--dark-pink);
+            font-weight: bold;
+            border-radius: 5px 5px 0 0;
+            transition: 0.3s;
+        }
+        .tab-btn:hover {
+            background-color: #ffc0cb;
+        }
+        .tab-btn.active-tab {
+            background-color: var(--main-pink);
+            color: white;
+        }
+        .tab-panel {
+            display: none;
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        /* Підказка (Tooltip) */
+        .fancy-tooltip {
+            position: relative;
+            display: inline-block;
+            color: var(--dark-pink);
+            font-weight: bold;
+            text-decoration: underline dotted var(--dark-pink);
+            cursor: help;
+        }
+        .fancy-tooltip .tooltip-box {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark-pink);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            position: absolute;
+            z-index: 10;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 13px;
+            font-weight: normal;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .fancy-tooltip:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Посилання (Link) */
+        .pretty-link {
+            color: var(--dark-pink);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        .pretty-link:hover {
+            color: var(--main-pink);
+            border-bottom-color: var(--main-pink);
+        }
+
+        /* Таблиця (Data grid) */
+        .pink-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background-color: #fff;
+        }
+        .pink-table th {
+            background-color: var(--main-pink);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        .pink-table td {
+            padding: 10px;
+            border-bottom: 2px solid var(--zone-bg);
+            color: var(--text-main);
+            font-weight: bold;
+        }
+        .pink-table tr:hover td {
+            background-color: var(--zone-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Базові UI Елементи</h1>
+    </header>
+
+    <div class="components-grid">
+
+        <!-- 1. Radiobutton -->
+        <div class="ui-card">
+            <h2>1. Radiobutton (Перемикач)</h2>
+            <p class="info">Дозволяє обрати виключно один варіант із декількох взаємовиключних опцій.</p>
+            <div class="interactive-zone radio-check-group">
+                <label><input type="radio" name="theme" value="light" checked> Яскраво-рожевий</label>
+                <label><input type="radio" name="theme" value="dark"> Ніжно-рожевий</label>
+            </div>
+        </div>
+
+        <!-- 2. Checkbox -->
+        <div class="ui-card">
+            <h2>2. Checkbox (Прапорець)</h2>
+            <p class="info">Використовується для вибору кількох незалежних опцій одночасно або підтвердження дії.</p>
+            <div class="interactive-zone radio-check-group">
+                <label><input type="checkbox" checked> Люблю рожевий колір</label>
+                <label><input type="checkbox"> Підписатися на оновлення</label>
+            </div>
+        </div>
+
+        <!-- 3. Text input -->
+        <div class="ui-card">
+            <h2>3. Text input (Текстове поле)</h2>
+            <p class="info">Поле, куди користувач може ввести однорядковий текст (ім'я, пошуковий запит тощо).</p>
+            <div class="interactive-zone">
+                <input type="text" placeholder="Напишіть щось тут...">
+            </div>
+        </div>
+
+        <!-- 4. Tabs -->
+        <div class="ui-card">
+            <h2>4. Tabs (Вкладки)</h2>
+            <p class="info">Групують контент за логічними розділами, дозволяючи перемикати відображення без оновлення сторінки.</p>
+            <div class="interactive-zone">
+                <div class="tab-headers">
+                    <button class="tab-btn active-tab" onclick="switchTab(event, 'content1')">Профіль</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'content2')">Налаштування</button>
+                </div>
+                <div id="content1" class="tab-panel" style="display: block;">
+                    Привіт! Тут відображається інформація профілю.
+                </div>
+                <div id="content2" class="tab-panel">
+                    Тут знаходяться налаштування безпеки та приватності.
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Button -->
+        <div class="ui-card">
+            <h2>5. Button (Кнопка)</h2>
+            <p class="info">Служить для підтвердження дій, відправки даних або виклику певних функцій.</p>
+            <div class="interactive-zone">
+                <button class="pink-btn" onclick="alert('Супер! Все працює ідеально!')">Натисни мене</button>
+            </div>
+        </div>
+
+        <!-- 6. Text label -->
+        <div class="ui-card">
+            <h2>6. Text label (Мітка)</h2>
+            <p class="info">Текстовий підпис, пов'язаний з полем введення. Робить інтерфейс зрозумілішим та доступнішим.</p>
+            <div class="interactive-zone">
+                <label for="emailInput" style="display:block; margin-bottom: 5px; font-weight: bold; color: var(--dark-pink);">Ваш Email:</label>
+                <input type="text" id="emailInput" placeholder="example@mail.com">
+            </div>
+        </div>
+
+        <!-- 7. Link -->
+        <div class="ui-card">
+            <h2>7. Link (Посилання)</h2>
+            <p class="info">Елемент навігації для переходу між веб-сторінками або до зовнішніх ресурсів.</p>
+            <div class="interactive-zone">
+                <a href="https://github.com" target="_blank" class="pretty-link">Перейти на GitHub →</a>
+            </div>
+        </div>
+
+        <!-- 8. Tooltip -->
+        <div class="ui-card">
+            <h2>8. Tooltip (Підказка)</h2>
+            <p class="info">Невеличке інформаційне віконце, що з'являється при наведенні курсору миші на елемент.</p>
+            <div class="interactive-zone" style="text-align: center; padding: 25px 15px;">
+                Наведи на <span class="fancy-tooltip">це слово<span class="tooltip-box">Вау! Це прихована підказка!</span></span>, щоб побачити магію.
+            </div>
+        </div>
+
+        <!-- 9. Dropdown list -->
+        <div class="ui-card">
+            <h2>9. Dropdown (Випадний список)</h2>
+            <p class="info">Компактний спосіб показати великий перелік опцій, з якого можна вибрати лише одну.</p>
+            <div class="interactive-zone">
+                <select>
+                    <option>Дизайн інтерфейсів</option>
+                    <option>Програмування</option>
+                    <option>Тестування ПЗ</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 10. Data grid -->
+        <div class="ui-card">
+            <h2>10. Data grid (Таблиця)</h2>
+            <p class="info">Компонент для структурованого подання інформації у форматі рядків та стовпців.</p>
+            <div class="interactive-zone" style="padding: 10px;">
+                <table class="pink-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Предмет</th>
+                            <th>Оцінка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Бази даних</td>
+                            <td>Відмінно</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Веб-дизайн</td>
+                            <td>Добре</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Скрипт для керування вкладками (Tabs)
+        function switchTab(evt, panelId) {
+            // Ховаємо всі панелі
+            const panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(panel => panel.style.display = 'none');
+            
+            // Забираємо активний стан у всіх кнопок
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active-tab'));
+            
+            // Показуємо потрібну панель і активуємо кнопку
+            document.getElementById(panelId).style.display = 'block';
+            evt.currentTarget.classList.add('active-tab');
+        }
+    </script>
+
+</body>
+</html>
